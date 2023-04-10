@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlickBait</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      label {
+        margin-right: 0.5rem;
+      }
+
+      input[type="text"] {
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: none;
+      margin-right: 0.5rem;
+    }
+
+    button[type="submit"] {
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+
+    main {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #movie-details {
+      background-color: #fff;
+      border-radius: 0.25rem;
+      padding: 1rem;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      max-width: 40rem;
+      text-align: center;
+    }
+
+    #movie-images img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+
+    #movie-synopsis {
+      text-align: justify;
+    }
+
+    #movie-reviews {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    #like-button {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flickbait</h1>
+        <form>
+            <label for="search">Search for a movie:</label>
+            <input type="text" id="search" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main>
+        <section id="movie-details">
+          <h2 id="movie-title"></h2>
+          <div id="movie-images"></div>
+          <p id="movie-synopsis"></p>
+          <div id="movie-reviews"></div>
+          <button id="like-button">Like</button>
+        </section>
+    </main>
+    <script>
+        const form = document.querySelector('form');
+        const searchInput = document.querySelector('#search');
+        const movieTitle = document.querySelector('#movie-title');
+        const movieImages = document.querySelector('#movie-images');
+        const movieSynopsis = document.querySelector('#movie-synopsis');
+        const movieReviews = document.querySelector('#movie-reviews');
+        const likeButton = document.querySelector('#like-button');
+  
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const searchQuery = searchInput.value;
+          getMovieData(searchQuery);
+        });
+  
+        async function getMovieData(searchQuery) {
+          const response = await fetch(`http://www.omdbapi.com/?t=${searchQuery}&apikey=6a31d165`);
+          const data = await response.json();
+          console.log(data);
+          if (data.Response === 'True') {
+            updateMovieInfo(data);
+          } else {
+            alert('Movie not found. Please try again.');
+          }
+        }
+  
+        function updateMovieInfo(movieData) {
+          movieTitle.textContent = movieData.Title;
+          movieImages.innerHTML = `<img src="${movieData.Poster}" alt="${movieData.Title}">`;
+          movieSynopsis.textContent = movieData.Plot;
+          movieReviews.innerHTML = '';
+          likeButton.addEventListener('click', () => {
+            alert('Liked!');
+          });
+        }
+      </script>  
+</body>
+</html>
