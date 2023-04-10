@@ -6,8 +6,8 @@
 FlickBait is an app that allows movie watchers to search for their movies and receive a short synopsis on their movie of choice. It also allows them to like the movies that they search for.
 
 ## SCREENSHOTS
-- link 1
-- link 2
+- https://user-images.githubusercontent.com/50429540/230888744-cd006816-b149-4bb0-8fbf-e146ef01d34f.png
+- https://user-images.githubusercontent.com/50429540/230889385-5e5829b6-e768-4f5c-a3a9-e38de5b8f834.png
 
 
 ********
