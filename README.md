@@ -14,7 +14,7 @@ FlickBait is an app that allows movie watchers to search for their movies and re
 ## SetUp Instruction
 ### Requirements
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [Testing Platform](Platform URL)
+* 
 
 
 ### Getting Files
@@ -39,17 +39,12 @@ Then run server with the above command
 Or you can access the web application directly via this [LINK.](link.com/)
 *****
 ## Dependencies
-- Package Name
-- Package Name
-- Package Name
-- Package Name
+
 *****
 ## Technologies Used
 1. HTML
 2. CSS
 3. JavaScript
-4. 
-5. 
 *****
 ## Contact Information
 * Email : melchizedek.maranga@gmail.com
